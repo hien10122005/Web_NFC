@@ -197,6 +197,7 @@ Sau khi **P1 + P2 xong**, có thể chia 3 agent chạy song song, phạm vi fil
 
 | Ngày | Agent | Task | Tóm tắt | File chính |
 |---|---|---|---|---|
+| 05/10/2026 | Antigravity | P4-PRO | Nâng cấp toàn diện giao diện Profile công khai chuẩn Pro: Ambient Aura Glow, 3D Holographic NFC Card xoay lật tương tác, vệt sáng quét Shimmer Sweep, âm thanh phản hồi Web Audio API, thẻ chuyển khoản VietQR Napas 247 | `src/components/profile/**`, `src/app/globals.css`, `src/lib/sound.ts` |
 | 05/10/2026 | Antigravity | P4 (T4.1–T4.8) | Hoàn thành toàn bộ Phase P4: Trang cá nhân `/u/[username]`, tải vCard 3.0, luồng quét thẻ `/c/[code]`, kích hoạt thẻ mới, tracking link `/l/[id]`, chia sẻ QR & báo cáo vi phạm | `src/app/(public)/**`, `src/components/profile/**` |
 | 05/10/2026 | Antigravity | T3.8 | Xây dựng Dashboard Overview `/dashboard` hoàn chỉnh: số liệu thực tế lượt xem, liên kết, thẻ NFC và checklist tiến độ hoàn thiện hồ sơ | `src/app/dashboard/page.tsx` |
 | 05/10/2026 | Antigravity | T3.7 | Xây dựng trang `/dashboard/settings` đổi mật khẩu, đổi email, xóa tài khoản vĩnh viễn và tạo migration `0007_delete_my_account.sql` | `src/app/dashboard/settings/*`, `src/components/dashboard/settings-form.tsx`, `src/actions/settings.ts`, `supabase/migrations/0007_*` |
