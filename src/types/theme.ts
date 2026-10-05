@@ -147,13 +147,15 @@ export function parseTheme(raw: unknown): ProfileTheme {
     return DEFAULT_THEME;
   }
   const obj = raw as Partial<ProfileTheme>;
+  const matchedPreset = THEME_PRESETS.find((p) => p.id === obj.preset)?.theme || DEFAULT_THEME;
+
   return {
-    preset: obj.preset || DEFAULT_THEME.preset,
-    primaryColor: obj.primaryColor || DEFAULT_THEME.primaryColor,
-    backgroundColor: obj.backgroundColor || DEFAULT_THEME.backgroundColor,
-    backgroundType: obj.backgroundType || DEFAULT_THEME.backgroundType,
-    cardStyle: obj.cardStyle || DEFAULT_THEME.cardStyle,
-    buttonStyle: obj.buttonStyle || DEFAULT_THEME.buttonStyle,
-    fontFamily: obj.fontFamily || DEFAULT_THEME.fontFamily,
+    preset: obj.preset || matchedPreset.preset,
+    primaryColor: obj.primaryColor || matchedPreset.primaryColor,
+    backgroundColor: obj.backgroundColor || matchedPreset.backgroundColor,
+    backgroundType: obj.backgroundType || matchedPreset.backgroundType,
+    cardStyle: obj.cardStyle || matchedPreset.cardStyle,
+    buttonStyle: obj.buttonStyle || matchedPreset.buttonStyle,
+    fontFamily: obj.fontFamily || matchedPreset.fontFamily,
   };
 }
