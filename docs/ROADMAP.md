@@ -114,14 +114,14 @@ Sau khi **P1 + P2 xong**, có thể chia 3 agent chạy song song, phạm vi fil
 
 | ID | Task | Depends | Phạm vi | Trạng thái | Agent |
 |---|---|---|---|---|---|
-| T4.1 | `[UI]` `/u/[username]`: Server Component, ảnh bìa, avatar, tên, chức danh, bio, nút liên hệ nhanh (Gọi, SMS, Email, Zalo), danh sách liên kết theo `position`, áp `theme`, tôn trọng `visibility`. Không tồn tại / riêng tư / bị khóa → trang 404 thân thiện | T1.3 | `(public)/u/[username]`, `components/profile/**` | ⬜ | |
-| T4.2 | `[UI]` Nút **"Lưu danh bạ"**: route `/u/[username]/vcard` trả file `.vcf` (vCard 3.0, UTF-8, kèm ảnh nếu có) | T4.1 | `(public)/u/[username]/vcard/route.ts` | ⬜ | |
-| T4.3 | `[CORE]` `/c/[code]`: gọi RPC `resolve_card` (truyền device, user_agent; `?src=qr` → source `qr`) → `active`: redirect `/u/{username}`; `unassigned`: sang T4.4; `locked`/`lost`/`not_found`/`profile_unavailable`: trang thông báo phù hợp | T1.3 | `(public)/c/[code]` | ⬜ | |
-| T4.4 | `[UI]` Trang kích hoạt thẻ mới: chưa đăng nhập → mời đăng nhập/đăng ký (giữ `?next=/c/{code}`); đã đăng nhập → nút "Gắn thẻ vào tài khoản" (RPC `activate_card`) | T4.3, T2.1 | `(public)/c/[code]/activate` | ⬜ | |
-| T4.5 | `[CORE]` Ghi thống kê: gọi `log_profile_view` khi truy cập trực tiếp (không ghi trùng khi đến từ `/c/`), `log_link_click` khi bấm liên kết (dùng `navigator.sendBeacon` hoặc route trung gian `/l/[linkId]`) | T4.1 | `components/profile/**` | ⬜ | |
-| T4.6 | `[UI]` Nút chia sẻ (Web Share API, fallback copy link) + hiển thị/tải mã QR của trang | T4.1 | `components/profile/share-*` | ⬜ | |
-| T4.7 | `[UI]` Nút "Báo cáo trang" → dialog nhập lý do → insert `reports` | T4.1 | `components/profile/report-dialog.tsx` | ⬜ | |
-| T4.8 | `[UI]` SEO & chia sẻ: `generateMetadata` (title, description, OG image = avatar), `robots` cho trang riêng tư | T4.1 | `(public)/u/[username]` | ⬜ | |
+| T4.1 | `[UI]` `/u/[username]`: Server Component, ảnh bìa, avatar, tên, chức danh, bio, nút liên hệ nhanh (Gọi, SMS, Email, Zalo), danh sách liên kết theo `position`, áp `theme`, tôn trọng `visibility`. Không tồn tại / riêng tư / bị khóa → trang 404 thân thiện | T1.3 | `(public)/u/[username]`, `components/profile/**` | ✅ | Antigravity · 05/10/2026 |
+| T4.2 | `[UI]` Nút **"Lưu danh bạ"**: route `/u/[username]/vcard` trả file `.vcf` (vCard 3.0, UTF-8, kèm ảnh nếu có) | T4.1 | `(public)/u/[username]/vcard/route.ts` | ✅ | Antigravity · 05/10/2026 |
+| T4.3 | `[CORE]` `/c/[code]`: gọi RPC `resolve_card` (truyền device, user_agent; `?src=qr` → source `qr`) → `active`: redirect `/u/{username}`; `unassigned`: sang T4.4; `locked`/`lost`/`not_found`/`profile_unavailable`: trang thông báo phù hợp | T1.3 | `(public)/c/[code]` | ✅ | Antigravity · 05/10/2026 |
+| T4.4 | `[UI]` Trang kích hoạt thẻ mới: chưa đăng nhập → mời đăng nhập/đăng ký (giữ `?next=/c/{code}`); đã đăng nhập → nút "Gắn thẻ vào tài khoản" (RPC `activate_card`) | T4.3, T2.1 | `(public)/c/[code]/activate` | ✅ | Antigravity · 05/10/2026 |
+| T4.5 | `[CORE]` Ghi thống kê: gọi `log_profile_view` khi truy cập trực tiếp (không ghi trùng khi đến từ `/c/`), `log_link_click` khi bấm liên kết (dùng `navigator.sendBeacon` hoặc route trung gian `/l/[linkId]`) | T4.1 | `components/profile/**` | ✅ | Antigravity · 05/10/2026 |
+| T4.6 | `[UI]` Nút chia sẻ (Web Share API, fallback copy link) + hiển thị/tải mã QR của trang | T4.1 | `components/profile/share-*` | ✅ | Antigravity · 05/10/2026 |
+| T4.7 | `[UI]` Nút "Báo cáo trang" → dialog nhập lý do → insert `reports` | T4.1 | `components/profile/report-dialog.tsx` | ✅ | Antigravity · 05/10/2026 |
+| T4.8 | `[UI]` SEO & chia sẻ: `generateMetadata` (title, description, OG image = avatar), `robots` cho trang riêng tư | T4.1 | `(public)/u/[username]` | ✅ | Antigravity · 05/10/2026 |
 
 **Tiêu chí:** Quét thẻ (mở `/c/{code}`) → tới trang cá nhân < 2 giây trên mobile; Lighthouse mobile ≥ 90.
 
@@ -197,6 +197,7 @@ Sau khi **P1 + P2 xong**, có thể chia 3 agent chạy song song, phạm vi fil
 
 | Ngày | Agent | Task | Tóm tắt | File chính |
 |---|---|---|---|---|
+| 05/10/2026 | Antigravity | P4 (T4.1–T4.8) | Hoàn thành toàn bộ Phase P4: Trang cá nhân `/u/[username]`, tải vCard 3.0, luồng quét thẻ `/c/[code]`, kích hoạt thẻ mới, tracking link `/l/[id]`, chia sẻ QR & báo cáo vi phạm | `src/app/(public)/**`, `src/components/profile/**` |
 | 05/10/2026 | Antigravity | T3.8 | Xây dựng Dashboard Overview `/dashboard` hoàn chỉnh: số liệu thực tế lượt xem, liên kết, thẻ NFC và checklist tiến độ hoàn thiện hồ sơ | `src/app/dashboard/page.tsx` |
 | 05/10/2026 | Antigravity | T3.7 | Xây dựng trang `/dashboard/settings` đổi mật khẩu, đổi email, xóa tài khoản vĩnh viễn và tạo migration `0007_delete_my_account.sql` | `src/app/dashboard/settings/*`, `src/components/dashboard/settings-form.tsx`, `src/actions/settings.ts`, `supabase/migrations/0007_*` |
 | 05/10/2026 | Antigravity | T3.6 | Xây dựng trang `/dashboard/cards` quản lý thẻ NFC, kích hoạt thẻ (RPC `activate_card`), báo mất/mở lại (RPC `set_my_card_status`), QR Code HD & SVG với qrcode | `src/app/dashboard/cards/*`, `src/components/dashboard/cards-manager.tsx`, `src/actions/cards.ts` |
