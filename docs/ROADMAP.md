@@ -58,9 +58,9 @@ Sau khi **P1 + P2 xong**, có thể chia 3 agent chạy song song, phạm vi fil
 | T0.2 | `[DB]` Schema 11 bảng (migration 0001) | ✅ | Coordinator |
 | T0.3 | `[DB]` Hàm RPC + trigger (0002), RLS (0003), Storage (0004), Seed (0005, 0006) | ✅ | Coordinator |
 | T0.4 | Sinh `database.types.ts`, `.env.local`, tài liệu `SUPABASE_SETUP.md` | ✅ | Coordinator |
-| T0.5 | 👤 Cấu hình Auth trên Dashboard: Site URL, Redirect URLs, bật Confirm email | ⬜ | **Người dùng** |
-| T0.6 | 👤 Tạo Google OAuth Client & nhập vào Supabase (tùy chọn) | ⬜ | **Người dùng** |
-| T0.7 | 👤 Cấu hình SMTP riêng (trước khi chạy thật) | ⬜ | **Người dùng** |
+| T0.5 | 👤 Cấu hình Auth trên Dashboard: Site URL, Redirect URLs, bật Confirm email | ✅ | Người dùng · 05/10/2026 |
+| T0.6 | 👤 Tạo Google OAuth Client & nhập vào Supabase (tùy chọn) | ✅ | Người dùng · 05/10/2026 |
+| T0.7 | 👤 Cấu hình SMTP riêng (trước khi chạy thật) | ✅ | Người dùng · 05/10/2026 |
 
 ---
 
@@ -131,13 +131,13 @@ Sau khi **P1 + P2 xong**, có thể chia 3 agent chạy song song, phạm vi fil
 
 | ID | Task | Depends | Phạm vi | Trạng thái | Agent |
 |---|---|---|---|---|---|
-| T5.1 | `[UI]` Layout `/admin` (sidebar: Tổng quan, Người dùng, Thẻ NFC, Báo cáo, Cài đặt, Nhật ký). Kiểm tra `requireAdmin()` ở layout server | T2.4 | `src/app/admin/layout.tsx` | ⬜ | |
-| T5.2 | `[UI]` `/admin` tổng quan: số liệu từ RPC `admin_get_overview`, biểu đồ người dùng mới & lượt quét 30 ngày (recharts), top 10 trang nhiều lượt xem | T5.1 | `admin/page.tsx` | ⬜ | |
-| T5.3 | `[UI]` `/admin/users`: bảng tìm kiếm/lọc/phân trang (server-side), xem chi tiết, khóa/mở (`status`), đổi `role`, ẩn trang (`is_public`), xóa user | T5.1 | `admin/users/**`, `actions/admin-users.ts` | ⬜ | |
-| T5.4 | `[UI]` `/admin/cards`: danh sách thẻ + lọc theo trạng thái/lô, **tạo hàng loạt** (RPC `admin_generate_cards`), **xuất CSV** (code, URL `{SITE_URL}/c/{code}`, batch), gán/gỡ thẻ cho user, khóa/mở thẻ, xem lịch sử quét | T5.1 | `admin/cards/**`, `actions/admin-cards.ts` | ⬜ | |
-| T5.5 | `[UI]` `/admin/reports`: danh sách báo cáo pending, xem trang bị báo cáo, xử lý (resolved/rejected) + tùy chọn ẩn trang / khóa user | T5.1 | `admin/reports/**` | ⬜ | |
-| T5.6 | `[UI]` `/admin/settings`: bật/tắt đăng ký (`site_settings`), thông báo chung, quản lý `social_platforms`, quản lý `reserved_usernames` | T5.1 | `admin/settings/**` | ⬜ | |
-| T5.7 | `[UI]` `/admin/logs`: xem `admin_logs` (lọc theo admin, hành động, ngày), xem chi tiết diff old/new | T5.1 | `admin/logs/**` | ⬜ | |
+| T5.1 | `[UI]` Layout `/admin` (sidebar: Tổng quan, Người dùng, Thẻ NFC, Báo cáo, Cài đặt, Nhật ký). Kiểm tra `requireAdmin()` ở layout server | T2.4 | `src/app/admin/layout.tsx` | ✅ DONE | Antigravity (05/10/2026) |
+| T5.2 | `[UI]` `/admin` tổng quan: số liệu từ RPC `admin_get_overview`, biểu đồ người dùng mới & lượt quét 30 ngày (recharts), top 10 trang nhiều lượt xem | T5.1 | `admin/page.tsx` | ✅ DONE | Antigravity (05/10/2026) |
+| T5.3 | `[UI]` `/admin/users`: bảng tìm kiếm/lọc/phân trang (server-side), xem chi tiết, khóa/mở (`status`), đổi `role`, ẩn trang (`is_public`), xóa user | T5.1 | `admin/users/**`, `actions/admin-users.ts` | ✅ DONE | Antigravity (05/10/2026) |
+| T5.4 | `[UI]` `/admin/cards`: danh sách thẻ + lọc theo trạng thái/lô, **tạo hàng loạt** (RPC `admin_generate_cards`), **xuất CSV** (code, URL `{SITE_URL}/c/{code}`, batch), gán/gỡ thẻ cho user, khóa/mở thẻ, xem lịch sử quét | T5.1 | `admin/cards/**`, `actions/admin-cards.ts` | ✅ DONE | Antigravity (05/10/2026) |
+| T5.5 | `[UI]` `/admin/reports`: danh sách báo cáo pending, xem trang bị báo cáo, xử lý (resolved/rejected) + tùy chọn ẩn trang / khóa user | T5.1 | `admin/reports/**`, `actions/admin-reports.ts` | ✅ DONE | Antigravity (05/10/2026) |
+| T5.6 | `[UI]` `/admin/settings`: bật/tắt đăng ký (`site_settings`), thông báo chung, quản lý `social_platforms`, quản lý `reserved_usernames` | T5.1 | `admin/settings/**`, `actions/admin-settings.ts` | ✅ DONE | Antigravity (05/10/2026) |
+| T5.7 | `[UI]` `/admin/logs`: xem `admin_logs` (lọc theo admin, hành động, ngày), xem chi tiết diff old/new | T5.1 | `admin/logs/**` | ✅ DONE | Antigravity (05/10/2026) |
 
 **Tiêu chí:** Admin quản lý được toàn bộ user & thẻ; user thường không gọi được bất kỳ chức năng admin nào (kể cả gọi API trực tiếp).
 
@@ -197,6 +197,8 @@ Sau khi **P1 + P2 xong**, có thể chia 3 agent chạy song song, phạm vi fil
 
 | Ngày | Agent | Task | Tóm tắt | File chính |
 |---|---|---|---|---|
+| 05/10/2026 | Antigravity | P5 (T5.1–T5.7) | Hoàn thành toàn bộ Phase P5 — Khu vực Admin: Layout bảo vệ quyền admin, tổng quan & biểu đồ recharts 30 ngày, quản lý người dùng, quản lý kho thẻ NFC & tạo hàng loạt/xuất CSV, duyệt báo cáo vi phạm, cài đặt hệ thống & MXH, nhật ký kiểm tra audit logs | `src/app/admin/**`, `src/components/admin/**`, `src/actions/admin-*.ts` |
+| 05/10/2026 | Người dùng | T0.5–T0.7 | Cấu hình xong Auth URLs, Google OAuth Provider, và hoàn tất cài đặt SMTP | Supabase Dashboard |
 | 05/10/2026 | Antigravity | P4-PRO | Nâng cấp toàn diện giao diện Profile công khai chuẩn Pro: Ambient Aura Glow, 3D Holographic NFC Card xoay lật tương tác, vệt sáng quét Shimmer Sweep, âm thanh phản hồi Web Audio API, thẻ chuyển khoản VietQR Napas 247 | `src/components/profile/**`, `src/app/globals.css`, `src/lib/sound.ts` |
 | 05/10/2026 | Antigravity | P4 (T4.1–T4.8) | Hoàn thành toàn bộ Phase P4: Trang cá nhân `/u/[username]`, tải vCard 3.0, luồng quét thẻ `/c/[code]`, kích hoạt thẻ mới, tracking link `/l/[id]`, chia sẻ QR & báo cáo vi phạm | `src/app/(public)/**`, `src/components/profile/**` |
 | 05/10/2026 | Antigravity | T3.8 | Xây dựng Dashboard Overview `/dashboard` hoàn chỉnh: số liệu thực tế lượt xem, liên kết, thẻ NFC và checklist tiến độ hoàn thiện hồ sơ | `src/app/dashboard/page.tsx` |
