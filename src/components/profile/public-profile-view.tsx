@@ -101,12 +101,13 @@ export function PublicProfileView({
   return (
     <div
       style={{
-        background: theme.backgroundColor.includes('gradient')
+        background: theme?.backgroundColor?.includes('gradient')
           ? theme.backgroundColor
           : undefined,
-        backgroundColor: !theme.backgroundColor.includes('gradient')
-          ? theme.backgroundColor
-          : undefined,
+        backgroundColor:
+          theme?.backgroundColor && !theme.backgroundColor.includes('gradient')
+            ? theme.backgroundColor
+            : undefined,
       }}
       className={`min-h-screen w-full relative overflow-x-hidden selection:bg-primary/20 ${fontClass} ${
         isDarkTheme ? 'text-zinc-100' : 'text-zinc-900'
@@ -225,6 +226,7 @@ export function PublicProfileView({
                   fill
                   className="object-cover"
                   priority
+                  unoptimized
                 />
               ) : (
                 <div
@@ -267,6 +269,7 @@ export function PublicProfileView({
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                     priority
+                    unoptimized
                   />
                 ) : (
                   <div

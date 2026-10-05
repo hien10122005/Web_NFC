@@ -27,7 +27,21 @@ export function BankAccountCard({
 
   const handleCopy = () => {
     onPlaySound?.();
-    navigator.clipboard.writeText(bankInfo.account_number || '');
+    const text = bankInfo.account_number || '';
+    if (navigator?.clipboard?.writeText) {
+      navigator.clipboard.writeText(text).catch(() => {});
+    } else {
+      try {
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        textArea.style.position = 'fixed';
+        textArea.style.left = '-9999px';
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+      } catch {}
+    }
     setCopied(true);
     toast.success('Đã sao chép số tài khoản ngân hàng!');
     setTimeout(() => setCopied(false), 2000);
