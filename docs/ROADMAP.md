@@ -169,15 +169,15 @@ Sau khi **P1 + P2 xong**, có thể chia 3 agent chạy song song, phạm vi fil
 
 ## P8 — Mở rộng (sau khi chạy thật)
 
-| ID | Task | Ghi chú |
-|---|---|---|
-| T8.1 | Thông tin ngân hàng + mã VietQR trên trang công khai | dùng cột `bank_info` |
-| T8.2 | Thêm khối nội dung: văn bản, ảnh, video YouTube, Google Maps | `[DB]` bảng `blocks` |
-| T8.3 | Đa ngôn ngữ Việt / Anh | next-intl |
-| T8.4 | PWA (cài như app) | |
-| T8.5 | Trang được bảo vệ bằng mật khẩu | `[DB]` |
-| T8.6 | Gói Free / Pro + thanh toán (PayOS / VNPay / MoMo) | `[DB]` |
-| T8.7 | Tài khoản Tổ chức: quản lý thẻ cho nhiều nhân viên/học sinh | `[DB]` |
+| ID | Task | Trạng thái | Ghi chú |
+|---|---|---|---|
+| T8.1 | Thông tin ngân hàng + mã VietQR trên trang công khai | ✅ DONE | Đã hoàn thành tại P4-PRO (`BankAccountCard` Napas 247) |
+| T8.2 | Thêm khối nội dung: văn bản, ảnh, video YouTube, Google Maps | ⬜ TODO | `[DB]` bảng `blocks` |
+| T8.3 | Đa ngôn ngữ Việt / Anh | ⬜ TODO | next-intl |
+| T8.4 | PWA (cài như app: manifest.json, standalone, app icon) | ✅ DONE | Hỗ trợ cài trực tiếp màn hình chính iOS & Android |
+| T8.5 | Trang được bảo vệ bằng mật khẩu | ⬜ TODO | `[DB]` |
+| T8.6 | Gói Free / Pro + thanh toán (PayOS / VNPay / MoMo) | ⬜ TODO | `[DB]` |
+| T8.7 | Tài khoản Tổ chức: quản lý thẻ cho nhiều nhân viên/học sinh | ⬜ TODO | `[DB]` |
 
 ---
 
@@ -195,6 +195,7 @@ Sau khi **P1 + P2 xong**, có thể chia 3 agent chạy song song, phạm vi fil
 
 | Ngày | Agent | Task | Tóm tắt | File chính |
 |---|---|---|---|---|
+| 06/10/2026 | Antigravity | T8.4 | Tích hợp PWA (Progressive Web App): `public/manifest.json`, icon thông minh `icon.svg`, thẻ appleWebApp cho phép cài trang cá nhân thành ứng dụng độc lập trên điện thoại | `public/manifest.json`, `public/icon.svg`, `src/app/layout.tsx` |
 | 06/10/2026 | Antigravity | T7.4 | Viết script kiểm thử tự động E2E `scripts/test-e2e.ts` xác minh 10/10 kịch bản: username availability, resolve thẻ NFC, log page view, chặn quyền admin và chuẩn danh thiếp vCard 3.0 | `scripts/test-e2e.ts`, `package.json` |
 | 06/10/2026 | Antigravity | T7.1–T7.3 | Hoàn thành kiểm thử bảo mật RLS, quét cố vấn Supabase Advisors, lập báo cáo `docs/TEST_REPORT.md`, và xây dựng 2 trang pháp lý `/privacy` & `/terms` theo Nghị định 13/2023/NĐ-CP | `docs/TEST_REPORT.md`, `src/app/(public)/privacy/page.tsx`, `src/app/(public)/terms/page.tsx` |
 | 06/10/2026 | Antigravity | P6 (T6.1–T6.5) | Hoàn thành toàn bộ Phase P6 — Thống kê & Lead: RPC `get_my_stats` & `admin_get_timeseries`, trang `/dashboard/stats` với Recharts trực quan 7/30/90 ngày, form thu thập thông tin khách `LeadForm` trên profile công khai, trang `/dashboard/leads` tìm kiếm/xóa/xuất CSV UTF-8, và Edge Function `notify-new-lead` gửi email báo lead mới | `src/app/dashboard/stats/**`, `src/app/dashboard/leads/**`, `src/components/profile/lead-form.tsx`, `src/actions/leads.ts`, `supabase/functions/notify-new-lead/**` |

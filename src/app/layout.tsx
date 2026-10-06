@@ -26,6 +26,16 @@ export const metadata: Metadata = {
     "vietqr",
     "vcard",
   ],
+  manifest: "/manifest.json",
+  icons: {
+    icon: "/icon.svg",
+    apple: "/icon.svg",
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Trang NFC",
+  },
 }
 
 export default function RootLayout({

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="nfcGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="50%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#8b5cf6" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#3b82f6" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+  
+  <!-- Nền bo tròn Card -->
+  <rect x="32" y="32" width="448" height="448" rx="112" fill="url(#nfcGrad)" filter="url(#shadow)" />
+  
+  <!-- Biểu tượng sóng NFC & Chip thông minh -->
+  <g fill="none" stroke="#ffffff" stroke-width="28" stroke-linecap="round">
+    <!-- Sóng 1 (nhỏ) -->
+    <path d="M 216 296 A 40 40 0 0 1 256 256 A 40 40 0 0 1 296 296" opacity="0.6" />
+    <!-- Sóng 2 (vừa) -->
+    <path d="M 180 296 A 88 88 0 0 1 256 212 A 88 88 0 0 1 332 296" opacity="0.85" />
+    <!-- Sóng 3 (lớn) -->
+    <path d="M 144 296 A 136 136 0 0 1 256 168 A 136 136 0 0 1 368 296" />
+  </g>
+
+  <!-- Điểm chạm trung tâm -->
+  <circle cx="256" cy="340" r="16" fill="#ffffff" />
+</svg>
