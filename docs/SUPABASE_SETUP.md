@@ -18,6 +18,7 @@
 | `0005_seed_data.sql` | Cấu hình mặc định, 14 nền tảng MXH, 38 username cấm |
 | `0006_revoke_is_admin_from_anon.sql` | Siết quyền gọi hàm `is_admin` |
 | `0007_delete_my_account.sql` | Người dùng tự xóa tài khoản của chính mình (xóa storage, nfc_cards, auth.users) |
+| `0008_stats_and_timeseries.sql` | RPC thống kê cá nhân (`get_my_stats`) & chuỗi thời gian Admin (`admin_get_timeseries`) |
 
 ## 2. Các hàm RPC để frontend gọi
 | Hàm | Ai gọi | Mục đích |
@@ -29,8 +30,10 @@
 | `activate_card(p_code)` | User | Gắn thẻ chưa kích hoạt vào tài khoản |
 | `set_my_card_status(p_card_id, p_status)` | User | Báo mất (`lost`) / mở lại (`active`) thẻ |
 | `delete_my_account()` | User | Xóa tài khoản, dọn storage và đưa thẻ về unassigned |
+| `get_my_stats(p_days)` | User | Thống kê lượt xem, nguồn (NFC/QR/Direct), thiết bị và top link có CTR |
 | `admin_generate_cards(p_count, p_batch_id, p_card_type)` | Admin | Tạo hàng loạt mã thẻ (tối đa 1000/lần) |
 | `admin_get_overview()` | Admin | Số liệu tổng quan cho dashboard |
+| `admin_get_timeseries(p_days)` | Admin | Dữ liệu chuỗi thời gian lượt xem, người dùng mới, thẻ kích hoạt |
 | `is_admin()` | User | Kiểm tra quyền admin |
 
 Giá trị `status` mà `resolve_card` trả về: `active` | `unassigned` | `locked` | `lost` | `not_found` | `profile_unavailable`.

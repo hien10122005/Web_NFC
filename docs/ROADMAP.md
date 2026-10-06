@@ -145,13 +145,11 @@ Sau khi **P1 + P2 xong**, có thể chia 3 agent chạy song song, phạm vi fil
 
 ## P6 — Thống kê & Lead
 
-| ID | Task | Depends | Phạm vi | Trạng thái | Agent |
-|---|---|---|---|---|---|
-| T6.1 | `[DB]` Migration RPC thống kê: `get_my_stats(p_days int)` (lượt xem theo ngày, theo nguồn nfc/qr/direct, theo thiết bị, click theo link) và `admin_get_timeseries(p_days int)` | P3 | migration mới | ⬜ | |
-| T6.2 | `[UI]` `/dashboard/stats`: biểu đồ lượt xem, nguồn truy cập, thiết bị, top liên kết; chọn 7/30/90 ngày | T6.1 | `dashboard/stats` | ⬜ | |
-| T6.3 | `[UI]` Form "Để lại thông tin" trên trang công khai (bật/tắt trong `theme`/`visibility`) + chống spam (Cloudflare Turnstile) | T4.1 | `components/profile/lead-form.tsx` | ⬜ | |
-| T6.4 | `[UI]` `/dashboard/leads`: danh sách, xóa, xuất CSV | T6.3 | `dashboard/leads` | ⬜ | |
-| T6.5 | `[DB]` Edge Function gửi email báo có lead mới (Resend) | T6.3, T0.7 | `supabase/functions/**` | ⬜ | |
+| T6.1 | `[DB]` Migration RPC thống kê: `get_my_stats(p_days int)` (lượt xem theo ngày, theo nguồn nfc/qr/direct, theo thiết bị, click theo link) và `admin_get_timeseries(p_days int)` | P3 | migration mới | ✅ DONE | Antigravity (06/10/2026) |
+| T6.2 | `[UI]` `/dashboard/stats`: biểu đồ lượt xem, nguồn truy cập, thiết bị, top liên kết; chọn 7/30/90 ngày | T6.1 | `dashboard/stats` | ✅ DONE | Antigravity (06/10/2026) |
+| T6.3 | `[UI]` Form "Để lại thông tin" trên trang công khai (bật/tắt trong `theme`/`visibility`) + chống spam (Honeypot trap) | T4.1 | `components/profile/lead-form.tsx` | ✅ DONE | Antigravity (06/10/2026) |
+| T6.4 | `[UI]` `/dashboard/leads`: danh sách, xóa, xuất CSV UTF-8 | T6.3 | `dashboard/leads` | ✅ DONE | Antigravity (06/10/2026) |
+| T6.5 | `[DB]` Edge Function gửi email báo có lead mới (Resend) | T6.3, T0.7 | `supabase/functions/**` | ✅ DONE | Antigravity (06/10/2026) |
 
 ---
 
@@ -197,6 +195,8 @@ Sau khi **P1 + P2 xong**, có thể chia 3 agent chạy song song, phạm vi fil
 
 | Ngày | Agent | Task | Tóm tắt | File chính |
 |---|---|---|---|---|
+| 06/10/2026 | Antigravity | P6 (T6.1–T6.5) | Hoàn thành toàn bộ Phase P6 — Thống kê & Lead: RPC `get_my_stats` & `admin_get_timeseries`, trang `/dashboard/stats` với Recharts trực quan 7/30/90 ngày, form thu thập thông tin khách `LeadForm` trên profile công khai, trang `/dashboard/leads` tìm kiếm/xóa/xuất CSV UTF-8, và Edge Function `notify-new-lead` gửi email báo lead mới | `src/app/dashboard/stats/**`, `src/app/dashboard/leads/**`, `src/components/profile/lead-form.tsx`, `src/actions/leads.ts`, `supabase/functions/notify-new-lead/**` |
+| 06/10/2026 | Antigravity | T6.1 | Viết migration `0008_stats_and_timeseries.sql`, áp dụng RPC `get_my_stats` và `admin_get_timeseries`, cập nhật database types và tài liệu setup | `supabase/migrations/0008_*`, `src/types/database.types.ts`, `docs/SUPABASE_SETUP.md` |
 | 05/10/2026 | Antigravity | P5 (T5.1–T5.7) | Hoàn thành toàn bộ Phase P5 — Khu vực Admin: Layout bảo vệ quyền admin, tổng quan & biểu đồ recharts 30 ngày, quản lý người dùng, quản lý kho thẻ NFC & tạo hàng loạt/xuất CSV, duyệt báo cáo vi phạm, cài đặt hệ thống & MXH, nhật ký kiểm tra audit logs | `src/app/admin/**`, `src/components/admin/**`, `src/actions/admin-*.ts` |
 | 05/10/2026 | Người dùng | T0.5–T0.7 | Cấu hình xong Auth URLs, Google OAuth Provider, và hoàn tất cài đặt SMTP | Supabase Dashboard |
 | 05/10/2026 | Antigravity | P4-PRO | Nâng cấp toàn diện giao diện Profile công khai chuẩn Pro: Ambient Aura Glow, 3D Holographic NFC Card xoay lật tương tác, vệt sáng quét Shimmer Sweep, âm thanh phản hồi Web Audio API, thẻ chuyển khoản VietQR Napas 247 | `src/components/profile/**`, `src/app/globals.css`, `src/lib/sound.ts` |

@@ -40,6 +40,7 @@ import {
   Phone,
   Save,
   User,
+  Users,
 } from "lucide-react"
 import type { Profile } from "@/lib/auth"
 
@@ -63,6 +64,7 @@ export function ProfileForm({ user, profile }: ProfileFormProps) {
     phone: rawVis.phone ?? true,
     email: rawVis.email ?? true,
     address: rawVis.address ?? true,
+    lead_form: rawVis.lead_form ?? true,
   }
 
   const form = useForm<ProfileInput>({
@@ -467,6 +469,32 @@ export function ProfileForm({ user, profile }: ProfileFormProps) {
                   <FormControl>
                     <Switch
                       checked={field.value}
+                      onCheckedChange={field.onChange}
+                    />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="visibility.lead_form"
+              render={({ field }) => (
+                <FormItem className="flex items-center justify-between rounded-xl border border-border/80 p-4 bg-muted/20">
+                  <div className="space-y-0.5 pr-4">
+                    <div className="flex items-center gap-2">
+                      <Users className="h-4 w-4 text-primary" />
+                      <FormLabel className="font-semibold text-sm">
+                        Thu thập thông tin khách (Lead Capture)
+                      </FormLabel>
+                    </div>
+                    <FormDescription className="text-xs">
+                      Cho phép người quét thẻ gửi họ tên, số điện thoại hoặc email liên hệ cho bạn trên trang cá nhân.
+                    </FormDescription>
+                  </div>
+                  <FormControl>
+                    <Switch
+                      checked={field.value ?? true}
                       onCheckedChange={field.onChange}
                     />
                   </FormControl>

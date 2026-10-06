@@ -7,6 +7,7 @@ export const visibilitySchema = z.object({
   phone: z.boolean(),
   email: z.boolean(),
   address: z.boolean(),
+  lead_form: z.boolean(),
 })
 
 export type VisibilityInput = z.infer<typeof visibilitySchema>

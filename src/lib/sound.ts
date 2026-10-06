@@ -81,3 +81,11 @@ class SoundFX {
 }
 
 export const soundFX = new SoundFX();
+
+export function playHapticFeedback(type: 'tap' | 'notification' = 'tap') {
+  if (type === 'notification') {
+    soundFX.playNfcConnect();
+  } else {
+    soundFX.playTap();
+  }
+}

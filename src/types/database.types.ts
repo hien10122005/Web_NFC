@@ -463,7 +463,9 @@ export type Database = {
         }
       }
       admin_get_overview: { Args: never; Returns: Json }
+      admin_get_timeseries: { Args: { p_days?: number }; Returns: Json }
       generate_card_code: { Args: { p_len?: number }; Returns: string }
+      get_my_stats: { Args: { p_days?: number }; Returns: Json }
       is_admin: { Args: never; Returns: boolean }
       is_username_available: { Args: { p_username: string }; Returns: boolean }
       log_link_click: { Args: { p_link_id: string }; Returns: undefined }

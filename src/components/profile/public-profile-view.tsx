@@ -10,6 +10,7 @@ import { ShareProfileButton } from './share-profile-button';
 import { ReportDialog } from './report-dialog';
 import { NfcHologramCard } from './nfc-hologram-card';
 import { BankAccountCard } from './bank-account-card';
+import { LeadForm } from './lead-form';
 import { soundFX } from '@/lib/sound';
 import { toast } from 'sonner';
 import {
@@ -491,6 +492,19 @@ export function PublicProfileView({
               ))}
             </div>
           </div>
+
+          {/* 2.5 KHỐI ĐỂ LẠI THÔNG TIN LIÊN HỆ (LEAD CAPTURE FORM) */}
+          {visibility.lead_form !== false && (
+            <div className="mt-6 animate-slide-up" style={{ animationDelay: '0.35s' }}>
+              <LeadForm
+                profileId={profile.id}
+                fullName={profile.full_name || profile.username || 'chủ thẻ'}
+                isDarkTheme={isDarkTheme}
+                primaryColor={theme.primaryColor}
+                buttonShape={getCardShapeClass().split(' ')[0]}
+              />
+            </div>
+          )}
         </div>
 
         {/* 3. FOOTER BẢO CHỨNG NFC & ĐIỀU HƯỚNG */}
