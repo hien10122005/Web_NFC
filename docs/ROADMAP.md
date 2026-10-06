@@ -157,11 +157,11 @@ Sau khi **P1 + P2 xong**, có thể chia 3 agent chạy song song, phạm vi fil
 
 | ID | Task | Depends | Trạng thái | Agent |
 |---|---|---|---|---|
-| T7.1 | `[SEC]` Kiểm thử RLS bằng 3 vai trò (anon / user A vs user B / admin): user không đọc/sửa được dữ liệu người khác, không tự nâng role, không chiếm thẻ người khác. Ghi kết quả vào `docs/TEST_REPORT.md` | P3, P5 | ⬜ | |
-| T7.2 | `[SEC]` Chạy `get_advisors` (security + performance), xử lý cảnh báo mới | T7.1 | ⬜ | |
-| T7.3 | `[UI]` Trang `/privacy` & `/terms` (theo Nghị định 13/2023/NĐ-CP về dữ liệu cá nhân) | P1 | ⬜ | |
+| T7.1 | `[SEC]` Kiểm thử RLS bằng 3 vai trò (anon / user A vs user B / admin): user không đọc/sửa được dữ liệu người khác, không tự nâng role, không chiếm thẻ người khác. Ghi kết quả vào `docs/TEST_REPORT.md` | P3, P5 | ✅ DONE | Antigravity (06/10/2026) |
+| T7.2 | `[SEC]` Chạy `get_advisors` (security + performance), xử lý cảnh báo mới | T7.1 | ✅ DONE | Antigravity (06/10/2026) |
+| T7.3 | `[UI]` Trang `/privacy` & `/terms` (theo Nghị định 13/2023/NĐ-CP về dữ liệu cá nhân) | P1 | ✅ DONE | Antigravity (06/10/2026) |
 | T7.4 | Kiểm thử E2E luồng chính (Playwright): đăng ký → tạo trang → kích hoạt thẻ → quét thẻ → xem trang | P3, P4 | ⬜ | |
-| T7.5 | Deploy Vercel, cấu hình env, tên miền | T7.1 | ⬜ | |
+| T7.5 | Deploy Vercel, cấu hình env, tên miền | T7.1 | 🟨 IN PROGRESS | Người dùng & Antigravity |
 | T7.6 | 👤 Cập nhật Site URL / Redirect URLs / Google OAuth theo tên miền thật; tạo tài khoản admin đầu tiên | T7.5 | ⬜ | **Người dùng** |
 | T7.7 | Ghi thử thẻ NFC thật (NTAG215) & kiểm tra trên iPhone + Android | T7.5 | ⬜ | **Người dùng** |
 
@@ -195,6 +195,7 @@ Sau khi **P1 + P2 xong**, có thể chia 3 agent chạy song song, phạm vi fil
 
 | Ngày | Agent | Task | Tóm tắt | File chính |
 |---|---|---|---|---|
+| 06/10/2026 | Antigravity | T7.1–T7.3 | Hoàn thành kiểm thử bảo mật RLS, quét cố vấn Supabase Advisors, lập báo cáo `docs/TEST_REPORT.md`, và xây dựng 2 trang pháp lý `/privacy` & `/terms` theo Nghị định 13/2023/NĐ-CP | `docs/TEST_REPORT.md`, `src/app/(public)/privacy/page.tsx`, `src/app/(public)/terms/page.tsx` |
 | 06/10/2026 | Antigravity | P6 (T6.1–T6.5) | Hoàn thành toàn bộ Phase P6 — Thống kê & Lead: RPC `get_my_stats` & `admin_get_timeseries`, trang `/dashboard/stats` với Recharts trực quan 7/30/90 ngày, form thu thập thông tin khách `LeadForm` trên profile công khai, trang `/dashboard/leads` tìm kiếm/xóa/xuất CSV UTF-8, và Edge Function `notify-new-lead` gửi email báo lead mới | `src/app/dashboard/stats/**`, `src/app/dashboard/leads/**`, `src/components/profile/lead-form.tsx`, `src/actions/leads.ts`, `supabase/functions/notify-new-lead/**` |
 | 06/10/2026 | Antigravity | T6.1 | Viết migration `0008_stats_and_timeseries.sql`, áp dụng RPC `get_my_stats` và `admin_get_timeseries`, cập nhật database types và tài liệu setup | `supabase/migrations/0008_*`, `src/types/database.types.ts`, `docs/SUPABASE_SETUP.md` |
 | 05/10/2026 | Antigravity | P5 (T5.1–T5.7) | Hoàn thành toàn bộ Phase P5 — Khu vực Admin: Layout bảo vệ quyền admin, tổng quan & biểu đồ recharts 30 ngày, quản lý người dùng, quản lý kho thẻ NFC & tạo hàng loạt/xuất CSV, duyệt báo cáo vi phạm, cài đặt hệ thống & MXH, nhật ký kiểm tra audit logs | `src/app/admin/**`, `src/components/admin/**`, `src/actions/admin-*.ts` |
