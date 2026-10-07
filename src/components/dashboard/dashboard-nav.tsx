@@ -8,6 +8,7 @@ import {
   BarChart3,
   CreditCard,
   ExternalLink,
+  Layers,
   LayoutDashboard,
   Link2,
   Palette,
@@ -40,6 +41,11 @@ export const navItems = [
     title: "Liên kết",
     href: "/dashboard/links",
     icon: Link2,
+  },
+  {
+    title: "Khối nội dung",
+    href: "/dashboard/blocks",
+    icon: Layers,
   },
   {
     title: "Giao diện",

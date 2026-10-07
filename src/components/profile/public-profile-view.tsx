@@ -13,6 +13,7 @@ import { BankAccountCard } from './bank-account-card';
 import { LeadForm } from './lead-form';
 import { soundFX } from '@/lib/sound';
 import { toast } from 'sonner';
+import { ProfileBlocks } from './profile-blocks';
 import {
   Phone,
   Mail,
@@ -32,16 +33,19 @@ import {
 
 type ProfileRow = Database['public']['Tables']['profiles']['Row'];
 type LinkRow = Database['public']['Tables']['links']['Row'];
+type BlockRow = Database['public']['Tables']['blocks']['Row'];
 
 interface PublicProfileViewProps {
   profile: ProfileRow;
   links: LinkRow[];
+  blocks?: BlockRow[];
   siteUrl: string;
 }
 
 export function PublicProfileView({
   profile,
   links,
+  blocks = [],
   siteUrl,
 }: PublicProfileViewProps) {
   const [reportOpen, setReportOpen] = useState(false);
@@ -491,6 +495,17 @@ export function PublicProfileView({
                 </a>
               ))}
             </div>
+
+            {/* KHỐI NỘI DUNG PHONG PHÚ (YOUTUBE, MAPS, GHI CHÚ, HÌNH ẢNH) */}
+            {blocks && blocks.length > 0 && (
+              <ProfileBlocks
+                blocks={blocks}
+                isDarkTheme={isDarkTheme}
+                primaryColor={theme.primaryColor}
+                cardShapeClass={getCardShapeClass()}
+                onPlaySound={handleTap}
+              />
+            )}
           </div>
 
           {/* 2.5 KHỐI ĐỂ LẠI THÔNG TIN LIÊN HỆ (LEAD CAPTURE FORM) */}

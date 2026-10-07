@@ -117,7 +117,11 @@ export function ProfileForm({ user, profile }: ProfileFormProps) {
     await updateProfileImagesAction({ coverUrl: null })
   }
 
-  const origin = typeof window !== "undefined" ? window.location.host : "trangcanhan.vn"
+  const [host, setHost] = React.useState("")
+
+  React.useEffect(() => {
+    setHost(window.location.host)
+  }, [])
   const currentUsername = form.watch("username")
 
   return (
@@ -205,8 +209,8 @@ export function ProfileForm({ user, profile }: ProfileFormProps) {
                         />
                       </div>
                     </FormControl>
-                    <FormDescription className="text-xs">
-                      {origin}/u/{currentUsername || "username"}
+                    <FormDescription suppressHydrationWarning className="text-xs">
+                      {host ? `${host}/u/` : "trangcanhan.vn/u/"}{currentUsername || "username"}
                     </FormDescription>
                     <FormMessage />
                   </FormItem>

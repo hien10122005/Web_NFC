@@ -52,6 +52,50 @@ export type Database = {
           },
         ]
       }
+      blocks: {
+        Row: {
+          content: Json
+          created_at: string
+          id: string
+          is_active: boolean
+          position: number
+          profile_id: string
+          title: string | null
+          type: string
+          updated_at: string
+        }
+        Insert: {
+          content?: Json
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          position?: number
+          profile_id: string
+          title?: string | null
+          type: string
+          updated_at?: string
+        }
+        Update: {
+          content?: Json
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          position?: number
+          profile_id?: string
+          title?: string | null
+          type?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "blocks_profile_id_fkey"
+            columns: ["profile_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       leads: {
         Row: {
           created_at: string

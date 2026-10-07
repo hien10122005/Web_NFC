@@ -113,7 +113,11 @@ export function OnboardingForm({ initialFullName = "" }: OnboardingFormProps) {
     }
   }
 
-  const origin = typeof window !== "undefined" ? window.location.host : "trangcanhan.vn"
+  const [host, setHost] = React.useState("")
+
+  React.useEffect(() => {
+    setHost(window.location.host)
+  }, [])
 
   return (
     <Card className="border-border/60 shadow-xl max-w-lg mx-auto">
@@ -211,8 +215,8 @@ export function OnboardingForm({ initialFullName = "" }: OnboardingFormProps) {
                 <Globe className="h-3.5 w-3.5 text-primary" />
                 <span>Đường dẫn trang cá nhân của bạn:</span>
               </div>
-              <div className="font-mono text-sm font-semibold text-primary break-all">
-                {origin}/u/{usernameValue ? usernameValue.trim().toLowerCase() : "username"}
+              <div suppressHydrationWarning className="font-mono text-sm font-semibold text-primary break-all">
+                {host ? `${host}/u/` : "trangcanhan.vn/u/"}{usernameValue ? usernameValue.trim().toLowerCase() : "username"}
               </div>
             </div>
 

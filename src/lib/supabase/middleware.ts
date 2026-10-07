@@ -3,6 +3,20 @@ import { NextResponse, type NextRequest } from "next/server"
 import type { Database } from "@/types/database.types"
 
 export async function updateSession(request: NextRequest) {
+  const pathname = request.nextUrl.pathname
+
+  const isProtectedPath =
+    pathname.startsWith("/dashboard") ||
+    pathname.startsWith("/admin") ||
+    pathname === "/onboarding"
+  const isAuthPage = pathname === "/login" || pathname === "/register"
+
+  // TỐI ƯU HIỆU NĂNG: Các route công khai (/, /u/*, /c/*, /l/*, ...) không cần kiểm tra Auth.
+  // Trả về ngay lập tức để trang công khai & luồng quét thẻ NFC tải tức thì mà không bị trễ mạng.
+  if (!isProtectedPath && !isAuthPage) {
+    return NextResponse.next({ request })
+  }
+
   let supabaseResponse = NextResponse.next({
     request,
   })
@@ -35,10 +49,8 @@ export async function updateSession(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser()
 
-  const pathname = request.nextUrl.pathname
-
   // 1. Routes requiring authentication: /dashboard, /admin, /onboarding
-  if (pathname.startsWith("/dashboard") || pathname.startsWith("/admin") || pathname === "/onboarding") {
+  if (isProtectedPath) {
     if (!user) {
       const url = request.nextUrl.clone()
       url.pathname = "/login"
